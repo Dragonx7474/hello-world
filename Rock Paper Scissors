@@ -1,0 +1,88 @@
+import random
+
+import os
+
+
+moves = ["rock", "paper", "scissors"]
+
+
+
+
+class Player:
+    def move(self):
+        return 'rock'
+
+    def learn(self, my_move, their_move):
+        pass
+
+class AllRockPlayer(Player):
+    pass
+
+class RandomPlayer(Player):
+    def move(self):
+        throw = random.choice(moves)
+        print("Computer chose: %s" % throw)
+        return throw
+
+##class ReflectPlayer(Player):
+
+##class CyclePlayer(Player):
+
+class HumanPlayer(Player):
+    def move(self,):
+        your_move = input("Choose what you want to play 'rock', 'paper', or 'scissors'")
+        while your_move != moves:
+            print("please enter a valid move. 'rock', 'paper', or 'scissors'")
+        return(your_move)
+
+    def get_computer_move(self):
+        print("Computer throw: %s" % throw)
+
+
+def beats(one, two):
+    return ((one == 'rock' and two == 'scissors') or
+            (one == 'scissors' and two == 'paper') or
+            (one == 'paper' and two == 'rock'))
+
+
+class Game:
+    def __init__(self, p1, p2):
+        self.p1 = p1
+        self.p2 = p2
+
+    def play_game(self):
+        print("Game start!")
+        for round in range(3):
+            print(f"Round {round}:")
+            self.play_round()
+        print("Game over!")
+
+    def other_method(self):
+        move1 = self.p1.move()
+        move2 = self.pl.move()
+
+    def play_round(self):
+        move1 = self.p1.move()
+        move2 = self.p2.move()
+        global currentRound, p1score, p2score
+        currentRound += 1
+        print(("\nPlayer1 Score: %s, Player2 Score: %s, Round:%s 'ctrl+c to leave'")%(p1score, p2score, currentRound))
+        p1_choice = self.p1
+        p2_choice = self.p2
+        if self.p1 == self.p2:
+            print("Draw!")
+        elif beats(p1,p2):
+            p1score += 1
+            print("Player 1 has won this round!")
+        elif beats(p2,p1):
+            p2score += 1
+            print("Player 2 has won this round!")
+
+
+
+if __name__ == '__main__':
+    p1 = HumanPlayer.move(HumanPlayer)
+    p2 = AllRockPlayer.move(AllRockPlayer)
+    game = Game(p1(), p2())
+    game.play_game()
+    game.play_round()
