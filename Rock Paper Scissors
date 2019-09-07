@@ -24,9 +24,22 @@ class RandomPlayer(Player):
         print("Computer chose: %s" % throw)
         return throw
 
-##class ReflectPlayer(Player):
+class ReflectPlayer(Player):
+    def move(self):
+        if self.their_player is None:
+            return random.choice(moves)
+        return self.their_move
 
-##class CyclePlayer(Player):
+class CyclePlayer(Player):
+    def move(self):
+        if self.my_move is None:
+            return random.choice(moves)
+        if p1 == "rock":
+            return "paper"
+        elif p1 == "scissors":
+            return "paper"
+        else:
+            return "rock"
 
 class HumanPlayer(Player):
     def move(self,):
@@ -59,7 +72,7 @@ class Game:
 
     def other_method(self):
         move1 = self.p1.move()
-        move2 = self.pl.move()
+        move2 = self.p2.move()
 
     def play_round(self):
         move1 = self.p1.move()
@@ -81,8 +94,8 @@ class Game:
 
 
 if __name__ == '__main__':
-    p1 = HumanPlayer.move(HumanPlayer)
-    p2 = AllRockPlayer.move(AllRockPlayer)
+    p1 = HumanPlayer()
+    p2 = AllRockPlayer()
     game = Game(p1(), p2())
     game.play_game()
     game.play_round()
